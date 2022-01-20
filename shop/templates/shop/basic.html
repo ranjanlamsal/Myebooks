@@ -47,6 +47,45 @@
 
     {% block body %} {% endblock %}
 
+
+<!--    footer-->
+  <div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+      <!-- logo+ copyright -->
+      <div class="col-md-4 d-flex align-items-center">
+        <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+          <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+        </a>
+        <span class="text-muted">&copy; 2021 Company, Inc</span>
+      </div>
+
+
+        <!--     Social Media       -->
+      <div class="nav col-md-4 justify-content-end list-unstyled d-flex social-media-div">
+        <a href="https://github.com/theoctober19th" class="icon-button github" target="_blank">
+          <i class="fab fa-github"></i>
+          <span></span>
+        </a>
+        <a href="https://www.linkedin.com/in/ranjan-lamsal-06b67718b/" class="icon-button linkedin" target="_blank">
+          <i class="fab fa-linkedin-in"></i>
+          <span></span>
+        </a>
+        <a href="mailto:lamsalranjan19@gmail.com" class="icon-button google" target="_blank">
+          <i class="fab fa-google"></i>
+          <span></span>
+        </a>
+        <a href="https://www.github.com/thejan13th.com/" class="icon-button gitlab" target="_blank">
+          <i class="fab fa-gitlab"></i>
+          <span></span>
+        </a>
+        <a href="https://www.facebook.com/kiranjanzarry.com/" class="icon-button facebook" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+          <span></span>
+        </a>
+      </div>
+    </footer>
+  </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -54,6 +93,36 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
     {% block js %}
+    <script>
+    console.log('working');
+    if(localStorage.getItem('cart') == null){
+    var cart = {};
+    }
+    else{
+    cart = JSON.parse(localStorage.getItem('cart'));
+    document.getElementById('cart').innerHTML = Object.keys(cart).length;
+<!--    string to javascriptobject = parse-->
+    }
+
+    $('.cart').click(
+    function(){
+    console.log('clicked');
+    var idstr = this.id.toString();
+    console.log(idstr);
+    if (cart[idstr] != undefined){
+    cart[idstr] = cart[idstr]+1;
+    }
+    else
+    {
+    cart[idstr] = 1;
+    }
+    console.log(cart);
+    localStorage.setItem('cart', JSON.stringify(cart));
+<!--    javascript obj to string = stringify-->
+
+    document.getElementById('cart').innerHTML = Object.keys(cart).length;
+    });
+</script>
     {% endblock %}
   </body>
 </html>

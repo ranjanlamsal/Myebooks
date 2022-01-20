@@ -9,6 +9,42 @@ Contact Us
 {% endblock %}
 
 {% block body %}
-
+<div class="container my-4">
+    <form class="form-group" method="post" action="/shop/contact/">{% csrf_token %}
+      <fieldset>
+        <legend>Please fill out the form to contact us</legend>
+        <p>
+          <label for="name">Full Name</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Fullname" required>
+        </p>
+        <p>
+          <label for="email">Email Address</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="something@example.com" required>
+        </p>
+        <p>
+          <label for="phone">Phone Number</label>
+          <input class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required>
+        </p>
+        <p>
+          <label for="url">Example url</label>
+          <input type="url" class="form-control" id="url" name="url">
+        </p>
+        <p>
+          <label>
+            <input type="checkbox" name="costumer" required>
+            I am your costumer
+          </label>
+        </p>
+        <p>
+          <label for="suggestion">Any Suggestions!!!</label>
+          <textarea id="suggestion" class="form-control" rows="10" name="suggestion"></textarea>
+        </p>
+        <p>
+          <button type="submit">Send Message</button>
+          <input type="reset" value="Reset">
+        </p>
+      </fieldset>
+    </form>
+</div>
 {% endblock %}
 
